@@ -1,0 +1,12 @@
+RewriteEngine On
+# RewriteCond %{HTTP_HOST} ^seya.meprasoft.com$ [OR]
+# RewriteCond %{HTTP_HOST} ^www.seya.meprasoft.com$ [OR]
+# RewriteCond %{HTTP_HOST} ^meprasoft.com$
+# RewriteCond %{REQUEST_URI} ^/$
+# RewriteRule ^(.*)$ http://www.meprasoft.com/ [R=301,L]
+
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]

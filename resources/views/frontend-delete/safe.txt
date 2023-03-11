@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>
+<meta charset="utf-8">
+<title>COMMITTEES_NYSASRC</title>
+<!-- Stylesheets -->
+<link href="{{asset('frontend_lib/css/bootstrap.css')}}" rel="stylesheet">
+<link href="{{asset('frontend_lib/css/style.css')}}" rel="stylesheet">
+<link href="{{asset('frontend_lib/css/responsive.css')}}" rel="stylesheet">
+<!--Color Switcher Mockup-->
+<link href="{{asset('frontend_lib/css/color-switcher-design.css')}}" rel="stylesheet">
+
+<link rel="shortcut icon" href="{{asset('frontend_lib/images/favicon.png')}}" type="image/x-icon">
+<link rel="icon" href="{{asset('frontend_lib/images/favicon.png')}}" type="image/x-icon">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+        <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300,500');
+
+@color-card-background: #2d3638;
+@color-tag-background: #191e20;
+@color-anchor: #e37544;
+@color-body-copy: #b9bcbd;
+@breakpoint-medium: "screen and (min-width: 700px)";
+
+html, body {
+  background-color: #fff;
+}
+
+.form-popup-bg {
+  position:absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.form-popup-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(94, 110, 141, 0.9);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  overflow-y: auto;
+  z-index: 10000;
+}
+.form-popup-bg.is-visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+  transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+.form-container {
+    background-color: #2d3638;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    position:relative;
+  padding: 40px;
+  color: #fff;
+}
+.close-button {
+  background:none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: solid 1px #fff;
+}
+
+.form-popup-bg:before{
+    content:'';
+    background-color: #fff;
+  opacity: .25;
+  position:absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+
+        .form-control{
+                display: block;
+    width: 100%;
+    height: 34px;
+    padding: 0px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+.container{
+  float:none;
+  /*margin-top: 150px;*/
+}
+.steps {
+    margin-top: -41px;
+    display: inline-block;
+    float: right;
+    font-size: 16px
+}
+.step {
+    float: left;
+    background: white;
+    padding: 7px 13px;
+    border-radius: 1px;
+    text-align: center;
+    width: 100px;
+    position: relative
+}
+.step_line {
+    margin: 0;
+    width: 0;
+    height: 0;
+    border-left: 16px solid #fff;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    z-index: 1008;
+    position: absolute;
+    left: 99px;
+    top: 1px
+}
+.step_line.backline {
+    border-left: 20px solid #f7f7f7;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    z-index: 1006;
+    position: absolute;
+    left: 99px;
+    top: -3px
+}
+.step_complete {
+    background: #357ebd
+}
+.step_complete a.check-bc, .step_complete a.check-bc:hover,.afix-1,.afix-1:hover{
+    color: #eee;
+}
+.step_line.step_complete {
+    background: 0;
+    border-left: 16px solid #357ebd
+}
+.step_thankyou {
+    float: left;
+    background: white;
+    padding: 7px 13px;
+    border-radius: 1px;
+    text-align: center;
+    width: 100px;
+}
+.step.check_step {
+    margin-left: 5px;
+}
+.ch_pp {
+    text-decoration: underline;
+}
+.ch_pp.sip {
+    margin-left: 10px;
+}
+.check-bc,
+.check-bc:hover {
+    color: #222;
+}
+.SuccessField {
+    border-color: #458845 !important;
+    -webkit-box-shadow: 0 0 7px #9acc9a !important;
+    -moz-box-shadow: 0 0 7px #9acc9a !important;
+    box-shadow: 0 0 7px #9acc9a !important;
+    background: #f9f9f9 url(../images/valid.png) no-repeat 98% center !important
+}
+
+.btn-xs{
+    line-height: 28px;
+}
+
+/*login form*/
+.login-container{
+    margin-top:30px ;
+}
+.login-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.login-container input[type=text], input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  /* border-radius: 2px; */
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.login-container input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.login-container-submit {
+  /* border: 1px solid #3079ed; */
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #357ebd;/*#4d90fe;*/
+  padding: 17px 0px;
+  font-family: roboto;
+  font-size: 14px;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+}
+
+.login-container-submit:hover {
+  /* border: 1px solid #2f5bb7; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #357ae8;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+.login-help{
+  font-size: 12px;
+}
+
+.asterix{
+    background:#f9f9f9 url(../images/red_asterisk.png) no-repeat 98% center !important;
+}
+
+/* images*/
+ol, ul {
+  list-style: none;
+}
+.hand {
+  cursor: pointer;
+  cursor: pointer;
+}
+.cards{
+    padding-left:0;
+}
+.cards li {
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
+  background-image: url('//c2.staticflickr.com/4/3713/20116660060_f1e51a5248_m.jpg');
+  background-position: 0 0;
+  float: left;
+  height: 32px;
+  margin-right: 8px;
+  text-indent: -9999px;
+  width: 51px;
+}
+.cards .mastercard {
+  background-position: -51px 0;
+}
+.cards li {
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
+  background-image: url('//c2.staticflickr.com/4/3713/20116660060_f1e51a5248_m.jpg');
+  background-position: 0 0;
+  float: left;
+  height: 32px;
+  margin-right: 8px;
+  text-indent: -9999px;
+  width: 51px;
+}
+.cards .amex {
+  background-position: -102px 0;
+}
+.cards li {
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
+  background-image: url('//c2.staticflickr.com/4/3713/20116660060_f1e51a5248_m.jpg');
+  background-position: 0 0;
+  float: left;
+  height: 32px;
+  margin-right: 8px;
+  text-indent: -9999px;
+  width: 51px;
+}
+.cards li:last-child {
+  margin-right: 0;
+}
+/* images end */
+
+
+
+
+.panel-footer{
+    background:#fff;
+}
+.btn{
+    border-radius: 1px;
+}
+.btn-sm, .btn-group-sm > .btn{
+    border-radius: 1px;
+}
+.input-sm, .form-horizontal .form-group-sm .form-control{
+    border-radius: 1px;
+}
+
+.panel-info {
+    border-color: #999;
+}
+
+.panel-heading {
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+}
+.panel {
+    border-radius: 1px;
+}
+.panel-info > .panel-heading {
+    color: #eee;
+    border-color: #999;
+}
+.panel-info > .panel-heading {
+    background-image: linear-gradient(to bottom, #555 0px, #888 100%);
+}
+
+hr {
+    border-color: #999 -moz-use-text-color -moz-use-text-color;
+}
+
+.panel-footer {
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-top: 1px solid #999;
+}
+
+.btn-link {
+    color: #888;
+}
+
+hr{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/** MEDIA QUERIES **/
+@media only screen and (max-width: 989px){
+    .span1{
+        margin-bottom: 15px;
+        clear:both;
+    }
+}
+
+@media only screen and (max-width: 764px){
+    .inverse-1{
+        float:right;
+    }
+}
+
+@media only screen and (max-width: 586px){
+    .cart-titles{
+        display:none;
+    }
+    .panel {
+        margin-bottom: 1px;
+    }
+}
+
+.form-control {
+    border-radius: 1px;
+}
+
+@media only screen and (max-width: 486px){
+    .col-xss-12{
+        width:100%;
+    }
+    .cart-img-show{
+        display: none;
+    }
+    .btn-submit-fix{
+        width:100%;
+    }
+    
+}
+/*
+@media only screen and (max-width: 777px){
+    .container{
+        overflow-x: hidden;
+    }
+}*/
+table { 
+	width: 750px; 
+	border-collapse: collapse; 
+	margin:50px auto;
+	}
+
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+	background: #eee; 
+	}
+
+th { 
+	background: #3498db; 
+	color: white; 
+	font-weight: bold; 
+	}
+
+td, th { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 18px;
+	}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	table { 
+	  	width: 100%; 
+	}
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		/* Label the data */
+		content: attr(data-column);
+
+		color: #000;
+		font-weight: bold;
+	}
+
+}
+
+.btn {
+  color: #fff;
+  background: #0079c1;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  border: 0;
+  outline: 0;
+
+  padding: 12px 35px;
+  display: inline-block;
+ 
+}
+.btn:hover, .btn:focus{
+    color:#fff!important;
+}
+
+.btn_sec {
+  color: #fff;
+  background: #0079c1;
+  font-weight: 700;
+  text-align: left;
+  text-decoration: none;
+  border: 0;
+  outline: 0;
+
+  padding: 12px 35px;
+  display: inline-block;
+}
+
+
+.each {
+     /* top: 50%; */
+    /* padding-left: 100%; */
+    transform: translate(-50%, -170%);
+ 
+    float: right;
+}
+        </style>
+    </head>
+    <body>
+        <div class="page-wrapper">
+
+    <!-- Preloader -->
+    <div class="preloader"></div>
+ 	<!-- Header span -->
+
+
+   
+    <!-- Main Header-->
+    <header class="main-header">
+        <div class="main-box">
+        	<div class="auto-container clearfix">
+            	<div class="logo-box">
+                	<div class="logo"><a href="index.html"><img src="{{asset('frontend_lib/images/nysarsc-logo.jpeg')}}" alt="" title=""></a></div>
+                </div>
+
+                <!--Nav Box-->
+                <div class="nav-outer clearfix">
+                    <!--Mobile Navigation Toggler-->
+                    <div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
+                    <!-- Main Menu -->
+                    <nav class="main-menu navbar-expand-md navbar-light">
+                        <div class="navbar-header">
+                            <!-- Togg le Button -->
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="icon flaticon-menu-button"></span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
+                            <ul class="navigation clearfix">
+                                <li class="current dropdown">
+                                    <a href="index.html">EVENTS</a>
+                                    <ul>
+                                        <li class="current dropdown"><a href="#">Annual Conference</a> 
+                                            <ul>
+                                                <li><a href="Conference2022_Nysarc.html">Conference 2022</a></li>
+                                                <li><a href="Conference2020_Nysarc.html">Conference 2020</a></li>
+                                        <ul class="accordion">
+                                          <li>
+                                            <p class="link"><a href="#">Conference 2019<i class="fa fa-toggle-down"></i></a></p>
+                                            <ul class="submenu">
+                                             <li><a href="Agenda_Nysarc.html">agenda</a></li>
+                                              <li><a href="Speakers_Nysarc.html">speakers</a></li>
+                                              <li><a href="">Presentation Download</a></li>
+                                             
+                                            </ul>
+                                          </li>
+  
+                                            </ul>
+                                               
+												<li><a href="Conference2018_Nysarc.html">Conference 2018</a></li>
+												
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                               
+                                <li class="dropdown"><a href="index.html">MEMBERSHIP</a>
+                                    <ul>
+                                        <li><a href="Membership_levels.html">Member fees/benefits</a></li>
+                                        <li><a href="becomeamember_Nysarc.html">Become a member</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a href="schedule.html">EDUCATION</a>
+                                    <ul>
+                                        <li><a href="webinar.html">Webinar</a></li>
+                                        <li><a href="newsletter.html">Newsletter</a></li>
+                                     
+                                    </ul>
+                                </li>
+                                <li class="dropdown"><a href="blog-sidebar.html">RESOURCES</a>
+                                    <ul>
+                                        <li><a href="Hub_Nysarc.html">HUB</a></li>
+                                        <li><a href="Links_Nysarc.html">LINKS</a></li>
+                                        
+                                    </ul>
+                                </li>
+                                <!-- <li><a href="contact.html">RESOURCES</a></li> -->
+                                 <li class="dropdown"><a href="about-us.html">About</a>
+                                    <ul>
+                                        <li><a href="Board_Nysarc.html">Board</a></li>
+                                        <li><a href="Committees_Nysarc.html">Committee</a></li>
+                                        <li><a href="Mission_Nysarc.html">Mission</a></li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- Main Menu End-->
+
+                    <!-- Outer box -->
+                    <div class="outer-box">
+                        <!--Search Box-->
+                        <div class="search-box-outer">
+                            <div class="search-box-btn"><span class="flaticon-search"></span></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu  -->
+        <div class="mobile-menu">
+            <div class="menu-backdrop"></div>
+            <div class="close-btn"><span class="icon flaticon-cancel-1"></span></div>
+
+            <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+            <nav class="menu-box">
+                <div class="nav-logo"><a href="index.html"><img src="{{asset('frontend_lib/images/nysarsc-logo.jpeg')}}" alt="" title=""></a></div>
+
+                <ul class="navigation clearfix"><!--Keep This Empty / Menu will come through Javascript--></ul>
+            </nav>
+        </div><!-- End Mobile Menu -->
+
+    </header>
+    <!--End Main Header -->
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container wrapper" style="margin-top: 150px;">
+       
+            <div class="">
+                <form class="form-horizontal" method="post" action="">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
+                      <!--CREDIT CART PAYMENT-->
+                    <div class="panel panel-info">
+                        <div class="panel-heading"><span><i class="glyphicon glyphicon-lock"></i></span> Secure Payment</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Card Type:</strong></div>
+                                <div class="col-md-12">
+                                    <select id="CreditCardType" name="CreditCardType" class="form-control">
+                                        <option value="5">Visa</option>
+                                        <option value="6">MasterCard</option>
+                                        <option value="7">American Express</option>
+                                        <option value="8">Discover</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Credit Card Number:</strong></div>
+                                <div class="col-md-12"><input type="text" class="form-control" name="car_number" value="" /></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Card CVV:</strong></div>
+                                <div class="col-md-12"><input type="text" class="form-control" name="car_code" value="" /></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Coupon Code:</strong></div>
+                                <div class="col-md-12"><input type="text" class="form-control" name="car_code" value="" /></div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <strong>Expiration Date</strong>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <select class="form-control" name="">
+                                        <option value="">Month</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                </select>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <select class="form-control" name="">
+                                        <option value="">Year</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <span>Pay secure using your credit card.</span>
+                                </div>
+                                <div class="col-md-12">
+                                    <ul class="cards">
+                                        <li class="visa hand">Visa</li>
+                                        <li class="mastercard hand">MasterCard</li>
+                                        <li class="amex hand">Amex</li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <button type="submit" class="btn btn-primary btn-submit-fix">Place Order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--CREDIT CART PAYMENT END-->
+                    <!--REVIEW ORDER-->
+                    <!--<div class="panel panel-info">-->
+                    <!--    <div class="panel-heading">-->
+                    <!--        Review Order <div class="pull-right"><small><a class="afix-1" href="#">Edit Cart</a></small></div>-->
+                    <!--    </div>-->
+                    <!--    <div class="panel-body">-->
+                    <!--        <div class="form-group">-->
+                    <!--            <div class="col-sm-3 col-xs-3">-->
+                    <!--                <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />-->
+                    <!--            </div>-->
+                    <!--            <div class="col-sm-6 col-xs-6">-->
+                    <!--                <div class="col-xs-12">Product name</div>-->
+                    <!--                <div class="col-xs-12"><small>Quantity:<span>1</span></small></div>-->
+                    <!--            </div>-->
+                    <!--            <div class="col-sm-3 col-xs-3 text-right">-->
+                    <!--                <h6><span>$</span>25.00</h6>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--        <div class="form-group"><hr /></div>-->
+                    <!--        <div class="form-group">-->
+                    <!--            <div class="col-sm-3 col-xs-3">-->
+                    <!--                <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />-->
+                    <!--            </div>-->
+                    <!--            <div class="col-sm-6 col-xs-6">-->
+                    <!--                <div class="col-xs-12">Product name</div>-->
+                    <!--                <div class="col-xs-12"><small>Quantity:<span>1</span></small></div>-->
+                    <!--            </div>-->
+                    <!--            <div class="col-sm-3 col-xs-3 text-right">-->
+                    <!--                <h6><span>$</span>25.00</h6>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--        <div class="form-group"><hr /></div>-->
+                    <!--        <div class="form-group">-->
+                    <!--            <div class="col-sm-3 col-xs-3">-->
+                    <!--                <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />-->
+                    <!--            </div>-->
+                    <!--            <div class="col-sm-6 col-xs-6">-->
+                    <!--                <div class="col-xs-12">Product name</div>-->
+                    <!--                <div class="col-xs-12"><small>Quantity:<span>2</span></small></div>-->
+                    <!--            </div>-->
+                    <!--            <div class="col-sm-3 col-xs-3 text-right">-->
+                    <!--                <h6><span>$</span>50.00</h6>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--        <div class="form-group"><hr /></div>-->
+                    <!--        <div class="form-group">-->
+                    <!--            <div class="col-xs-12">-->
+                    <!--                <strong>Subtotal</strong>-->
+                    <!--                <div class="pull-right"><span>$</span><span>200.00</span></div>-->
+                    <!--            </div>-->
+                    <!--            <div class="col-xs-12">-->
+                    <!--                <small>Shipping</small>-->
+                    <!--                <div class="pull-right"><span>-</span></div>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--        <div class="form-group"><hr /></div>-->
+                    <!--        <div class="form-group">-->
+                    <!--            <div class="col-xs-12">-->
+                    <!--                <strong>Order Total</strong>-->
+                    <!--                <div class="pull-right"><span>$</span><span>150.00</span></div>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    <!--REVIEW ORDER END-->
+                </div>
+                <form class="form-user" id="form-user" action="javascript:;">
+                 @csrf
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
+                    <!--SHIPPING METHOD-->
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Address</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <h4>Shipping Address</h4>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-md-12 col-xs-12">
+                                    <strong>Full Name:</strong>
+                                    <input type="text"  id="fullname" placeholder="" name="fullname" class="form-control" value="" />
+                                </div>
+                                <div class="span1"></div>
+                                
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Billing Name:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" id="billingname" placeholder="" name="billingname" class="form-control" value="" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Phone:</strong></div>
+                                <div class="col-md-12">
+                                    <input type="text" name="phone" id="phone" placeholder="" class="form-control" value="" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Email:</strong></div>
+                                <div class="col-md-12">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Driving License Number:</strong></div>
+                                <div class="col-md-12">
+                                <input type="text" class="form-control" id="" name="driving" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12"><strong>Comments:</strong></div>
+                                <div class="col-md-12">
+                                <input type="text" class="form-control" id="comments" name="comments" placeholder="" >
+                                </div>
+                            </div>
+                           
+
+
+                            <div class="form-group">
+                            <div class="col-md-12"><strong></strong></div>
+                                <div class="col-md-12">
+                                <button class="btn btn-success">Add Member</button>
+                                </div>
+                              
+                                </div>
+
+
+</form>
+
+
+
+                        </div>
+                    </div>
+                    <!--SHIPPING METHOD END-->
+                <table>
+                  <thead>
+                    <tr>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Job Title</th>
+                      <th>Twitter</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-column="First Name">James</td>
+                      <td data-column="Last Name">Matman</td>
+                      <td data-column="Job Title">Chief Sandwich Eater</td>
+                      <td data-column="Twitter">@james</td>
+                    </tr>
+                    <tr>
+                      <td data-column="First Name">Andor</td>
+                      <td data-column="Last Name">Nagy</td>
+                      <td data-column="Job Title">Designer</td>
+                      <td data-column="Twitter">@andornagy</td>
+                    </tr>
+                    <tr>
+                      <td data-column="First Name">Tamas</td>
+                      <td data-column="Last Name">Biro</td>
+                      <td data-column="Job Title">Game Tester</td>
+                      <td data-column="Twitter">@tamas</td>
+                    </tr>
+                    <tr>
+                      <td data-column="First Name">Zoli</td>
+                      <td data-column="Last Name">Mastah</td>
+                      <td data-column="Job Title">Developer</td>
+                      <td data-column="Twitter">@zoli</td>
+                    </tr>
+                    <tr>
+                      <td data-column="First Name">Szabi</td>
+                      <td data-column="Last Name">Nagy</td>
+                      <td data-column="Job Title">Chief Sandwich Eater</td>
+                      <td data-column="Twitter">@szabi</td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+                
+                </form>
+            </div>
+            <div class="row cart-footer">
+        
+            </div>
+               <div style="padding-top:3%;padding-bottom:2%;">
+
+      <button class="btn_sec" id="btnOpenForm">Edit Form</button>
+<div class="form-popup-bg">
+  <div class="form-container">
+    <button id="btnCloseForm" class="close-button">X</button>
+    <h1>Contact Us</h1>
+    <p>For more information. Please complete this form.</p>
+    <form class="form-user" id="form-user-edit" action="javascript:;">
+        @csrf
+      <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" id="fullname" placeholder="" name="fullname" />
+      </div>
+      <div class="form-group">
+        <label for="">Billing Name</label>
+        <input class="form-control" type="text" id="billingname" placeholder="" name="billingname" />
+      </div>
+      <div class="form-group">
+      <label for="email">Email <span class="text-muted">(Required)</span></label>
+        <input class="form-control" type="text" name="email" id="email" />
+      </div>
+      <div class="form-group">
+        <label for="">Phone </label>
+        <input class="form-control" type="text" name="phone" id="phone" />
+      </div>
+      <div class="form-group">
+          <label for="email">Driving License Number </label>
+          <input type="text" class="form-control" id="" name="driving" placeholder="">
+          
+        </div>
+
+
+        <div class="form-group">
+          <label for="address">Comments</label>
+          <input type="text" class="form-control" id="comments" name="comments" placeholder="" >
+          
+        </div>
+
+
+        <div>
+            <button class="btn btn-success">Add Member</button>
+</div>
+
+    </form>
+  </div>
+</div></div>
+
+    </div>
+        <!-- Main Footer -->
+
+<div class="each">
+   
+  <a href="#" class="btn"><span>Register</span></a>
+</div>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+       
+
+        <!--Footer Bottom-->
+        <div class="footer-bottom">
+            <div class="auto-container">
+                <div class="inner-container clearfix">
+                    <div class="copyright-text">
+                        <p>© Copyright 2023 All Rights Reserved by <a href="index.html">Seyasoft</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+</div>
+<!--End pagewrapper-->
+<!--Scroll to top-->
+<script>
+    function closeForm() {
+  $('.form-popup-bg').removeClass('is-visible');
+}
+
+$(document).ready(function($) {
+  
+  /* Contact Form Interactions */
+  $('#btnOpenForm').on('click', function(event) {
+    event.preventDefault();
+
+    $('.form-popup-bg').addClass('is-visible');
+  });
+  
+    //close popup when clicking x or off popup
+  $('.form-popup-bg').on('click', function(event) {
+    if ($(event.target).is('.form-popup-bg') || $(event.target).is('#btnCloseForm')) {
+      event.preventDefault();
+      $(this).removeClass('is-visible');
+    }
+  });
+  
+  
+  
+  });
+
+</script>
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-double-up"></span></div>
+<script src="{{asset('frontend_lib/js/jquery.js')}}"></script>
+<script src="{{asset('frontend_lib/js/popper.min.js')}}"></script>
+<script src="{{asset('frontend_lib/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('frontend_lib/js/jquery-ui.js')}}"></script>
+<script src="{{asset('frontend_lib/js/jquery.fancybox.js')}}"></script>
+<script src="{{asset('frontend_lib/js/appear.js')}}"></script>
+<script src="{{asset('frontend_lib/js/owl.js')}}"></script>
+<script src="{{asset('frontend_lib/js/wow.js')}}"></script>
+<script src="{{asset('frontend_lib/js/script.js')}}"></script>
+<!-- Color Setting -->
+<script src="js/color-settings.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script>
+
+        $(function(){
+            'use strict';
+
+            $('#datatable1').DataTable({
+              
+            responsive: true,
+
+            // responsive: { details: false} // Hide Plus Button on Datatable 
+
+
+            language: {
+                searchPlaceholder: 'Search...',
+                sSearch: '',
+                lengthMenu: '_MENU_ items/page',
+            },
+            "paging": true,
+            "ordering": true,
+            "searching": true,
+            "info": false,
+            "bLengthChange" : false,    
+            stateSave: true, 
+            "ordering": false
+            });
+            // $('.dataTables_filter').addClass('pull-left');
+            // Select2
+            $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity }); 
+
+        });
+
+        
+        $("#form-user").validate({
+        normalizer: function(value) {
+            return $.trim(value);
+        },
+        rules: {
+            fullname: {
+                required: true
+            },
+            billingname: {
+                required: true
+            },
+            phone: {
+                required: true
+            },
+            email: {
+                required: true
+            },
+
+
+        },
+        messages: {
+            fullname: {
+                required: "Full Name is required"
+            },
+            billingname: {
+                required: "Billing Name is required"
+            },
+            phone: {
+                required: "Phone Number is required"
+            },
+            email: {
+                required: "Email ID is required"
+            },
+
+
+        },
+
+        submitHandler: function(form) {
+            $('.msgDiv').html(``);
+            var data = new FormData(form);
+            $.ajax({
+                type: "post",
+                url: "{{route('checkout_store_member')}}",
+                data: data,
+                dataType: "json",
+                processData: false,
+                contentType: false,
+                cache: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(data) {
+                    if (data.status == 1) {
+
+                        $('.msgDiv').html(` <div class="alert alert-success">` + data.message + `</div>`);
+                        setTimeout(function() {
+                            $('.msgDiv').html(``);
+                            window.location.reload();
+                        }, 1000);
+
+                    } else {
+                        //var errors = data.message;
+                      //alert(errors);
+                      var object = ((data.message));
+                      //alert(JSON.stringify(data.message.mobile));
+
+                     // alert(fg);
+
+//                       var output = '';
+// for (var property in object) {
+//   output += property + ': ' + object[property]+'; ';
+// }
+// alert(output);
+
+
+
+                      let txt = "";
+                      
+                        for (let x in object) {
+                        txt += object[x] + '<br/>';
+                        };
+                        //  alert(txt);
+
+                        // var html = "";
+                        // $.each(data.errors, function(key, value) {
+                        //     html += value + "<br/>";
+                        // });
+                      //  document.getElementById("demo").innerHTML = txt;
+                       // alert(txt);
+
+                        $('.msgDiv').html(`<div class="alert alert-danger m-2">` + txt + `</div>`);
+                        // setTimeout(function() {
+                        //     $('.msgDiv').html(``);
+                        //     window.location.reload();
+                        // }, 1000);
+                    }
+                }
+            });
+            return false;
+        }
+    });
+
+
+
+
+    </script>
+    
+
+    </body>
+</html>
